@@ -45,34 +45,76 @@ void main() {
   int median,mean,max,min;
   /* Statistics and Printing Functions Go Here */
     void swap(unsigned char *xp, unsigned char *yp) { 
-         
+        int temp = *xp; 
+        *xp = *yp; 
+        *yp = temp; 
     }
 
-    void print_statistics(unsigned char arr[]){
-		
+	void print_statistics(unsigned char arr[]){
+		int max=0,i,j,min=arr[0],sum=0;
+		for (i=0;i<SIZE;i++){
+            sum=sum+arr[i];
+			if(max<arr[i])
+				max=arr[i];
+            if(arr[i]<min)
+                min=arr[i];
+		}
+        
+        for (i = 0; i < SIZE-1; i++)          
+            for (j = 0; j < SIZE-i-1; j++)  
+                if (arr[j] > arr[j+1]) 
+                    swap(&arr[j], &arr[j+1]);
+        printf("Minimum is:%d \n", min);
+        printf("Maximum is:%d \n", max);
+        printf("Mean is:%d \n", (sum/SIZE));
+        printf("Median is:%d \n", arr[SIZE/2]);
+	}
     
     void print_array(unsigned char arr[], unsigned int n){
-        
+        int i;
+        for (i=0;i<n;i++)
+            printf("%d ", arr[i]);
+        printf("\n");
     }
     
     unsigned char find_median(unsigned char arr[], unsigned int n){
-       
+        int i,j;
+        for (i = 0; i < n-1; i++)          
+            for (j = 0; j < n-i-1; j++)  
+                if (arr[j] > arr[j+1]) 
+                    swap(&arr[j], &arr[j+1]);
+        return arr[n/2];
     }
     
     unsigned char find_mean(unsigned char arr[], unsigned int n){
-        
+        int i,sum=0;
+        for(i=0;i<n;i++)
+            sum=sum+arr[i];
+        return (sum/n);
     }
     
     unsigned char find_maximum (unsigned char arr[], unsigned int n){
-        
+        int i,max=0;
+        for (i=0;i<n;i++)
+			if(max<arr[i])
+				max=arr[i];
+        return max;
     }
     
     unsigned char find_minimum (unsigned char arr[], unsigned int n){
-        
+        int i,min=arr[0];
+        for (i=1;i<n;i++)
+            if(arr[i]<min)
+                min=arr[i];
+        return min;
     }
     
     void sort_array(unsigned char arr[], unsigned int n){
-       
+        int i,j;
+        for (i = 0; i < n-1; i++)          
+            for (j = 0; j < n-i-1; j++)  
+                if (arr[j] < arr[j+1]) 
+                    swap(&arr[j], &arr[j+1]);
     }
     
     //Testing of the functions
