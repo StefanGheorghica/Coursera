@@ -9,20 +9,26 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief analyze an array of unsigned char data items and report analytics on the maximum, minimum, mean, and median of the data set
  *
- * <Add Extended Description Here>
- *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * print_statistics() - A function that prints the statistics of an array including minimum, maximum, mean, and median.
+ * print_array() - Given an array of data and a length, prints the array to the screen
+ * find_median() - Given an array of data and a length, returns the median value
+ * find_mean() - Given an array of data and a length, returns the mean
+ * find_maximum() - Given an array of data and a length, returns the maximum
+ * find_minimum() - Given an array of data and a length, returns the minimum
+ * sort_array() - Given an array of data and a length, sorts the array from largest to smallest. 
+ * 
+ * @author Stefan Gheorghica
+ * @date 07/13/2020
  *
  */
 
 
 
 #include <stdio.h>
-#include "stats.h"
+//#include "stats.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
@@ -36,11 +42,53 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
+  int median,mean,max,min;
   /* Statistics and Printing Functions Go Here */
-	void print_statistics(int a[]){
-		print("Been here %d",a[1]);
-}
-    print_statistics(test);
+    void swap(unsigned char *xp, unsigned char *yp) { 
+         
+    }
+
+    void print_statistics(unsigned char arr[]){
+		
+    
+    void print_array(unsigned char arr[], unsigned int n){
+        
+    }
+    
+    unsigned char find_median(unsigned char arr[], unsigned int n){
+       
+    }
+    
+    unsigned char find_mean(unsigned char arr[], unsigned int n){
+        
+    }
+    
+    unsigned char find_maximum (unsigned char arr[], unsigned int n){
+        
+    }
+    
+    unsigned char find_minimum (unsigned char arr[], unsigned int n){
+        
+    }
+    
+    void sort_array(unsigned char arr[], unsigned int n){
+       
+    }
+    
+    //Testing of the functions
+    
+    //print_statistics(test);
+    //print_array(test,SIZE);
+    //median=find_median(test,SIZE);
+    //printf("Median:%d\n", median);
+    //mean=find_mean(test,SIZE);
+    //printf("Mean:%d\n", mean);
+    //max=find_maximum(test,SIZE);
+    //printf("Maximum:%d\n", max);
+    //min=find_minimum(test,SIZE);
+    //printf("Minimum:%d\n", min);
+    //sort_array(test,SIZE);
+    //print_array(test,SIZE);
 }
 
 /* Add other Implementation File Code Here */
