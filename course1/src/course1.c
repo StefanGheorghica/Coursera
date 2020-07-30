@@ -27,7 +27,8 @@
 int8_t test_data1() {
   uint8_t * ptr;
   int32_t num = -4096;
-  uint32_t digits;
+  uint8_t* digits;
+  uint32_t digits2=0;
   int32_t value;
 
   PRINTF("\ntest_data1();\n");
@@ -37,9 +38,10 @@ int8_t test_data1() {
   {
     return TEST_ERROR;
   }
-
-  digits = my_itoa( num, ptr, BASE_16);   
-  value = my_atoi( ptr, digits, BASE_16);
+ 
+  digits = my_itoa( num, ptr, BASE_16);  
+  PRINTF("  Digits is: %s\n", digits); 
+  value = my_atoi( ptr, digits2, BASE_16);
   #ifdef VERBOSE
   PRINTF("  Initial number: %d\n", num);
   PRINTF("  Final Decimal number: %d\n", value);
@@ -56,7 +58,8 @@ int8_t test_data1() {
 int8_t test_data2() {
   uint8_t * ptr;
   int32_t num = 123456;
-  uint32_t digits;
+  uint8_t* digits;
+  uint32_t digits2=0;	
   int32_t value;
 
   PRINTF("test_data2():\n");
@@ -68,7 +71,8 @@ int8_t test_data2() {
   }
 
   digits = my_itoa( num, ptr, BASE_10);
-  value = my_atoi( ptr, digits, BASE_10);
+  PRINTF("  Digits is: %s\n", digits);
+  value = my_atoi( ptr, digits2, BASE_10);
   #ifdef VERBOSE
   PRINTF("  Initial Decimal number: %d\n", num);
   PRINTF("  Final Decimal number: %d\n", value);
@@ -95,6 +99,7 @@ int8_t test_memmove1() {
   if (! set ) 
   {
     return TEST_ERROR;
+    PRINTF("TEST NOK_1");
   }
   
   ptra = &set[0];
@@ -115,6 +120,7 @@ int8_t test_memmove1() {
     if (set[i + 16] != i)
     {
       ret = TEST_ERROR;
+	PRINTF("TEST NOK_1");
     }
   }
 
@@ -153,6 +159,7 @@ int8_t test_memmove2() {
     if (set[i + 8] != i)
     {
       ret = TEST_ERROR;
+	PRINTF("TEST_NOK_2 ");
     }
   }
 
@@ -192,6 +199,7 @@ int8_t test_memmove3() {
     if (set[i] != (i + 8))
     {
       ret = TEST_ERROR;
+      PRINTF("TEST NOK_3");
     }
   }
 

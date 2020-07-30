@@ -25,13 +25,13 @@ PLATFORM ?= HOST
 include sources.mk
 
 # Target name
-TARGET = c1m2
+TARGET = final
 
 # Architectures Specific Options
 CPU = cortex-m4
 ARCH = thumb
 SPECS = nosys.specs
-LINKER_FILE = ../msp432p401r.lds
+LINKER_FILE = msp432p401r.lds
 
 # Compiler Executable Definition
 ifeq ($(PLATFORM), HOST)
@@ -41,7 +41,7 @@ ifeq ($(PLATFORM), HOST)
   SIZE = size
   OBJDUMP = objdump
   # Compiler Flags
-  CFLAGS = -Wall -Werror -g -O0 -std=c99
+  CFLAGS = -Wall -Werror -g -O0 -std=c99 -DCOURSE1 -DVERBOSE
   # Linker Flags
   LDFLAGS = -Xlinker -Map=$(TARGET).map
 else

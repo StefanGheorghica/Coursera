@@ -8,8 +8,17 @@
  * misuse of this material. 
  *
  *****************************************************************************/
-#ifndef __PLATFORM_H__
-#define __PLATFORM_H__
+#ifndef __DATA_H__
+#define __DATA_H__
+#include <stdint.h>
+
+uint32_t val(uint8_t c); 
+
+uint8_t* my_itoa(int32_t data, uint8_t* ptr, uint32_t base);
+
+int32_t my_atoi(uint8_t * ptr, uint32_t digits, uint32_t base);
+
+#endif
 
 
 

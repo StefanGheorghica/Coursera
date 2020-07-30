@@ -29,11 +29,12 @@
 
 #include <stdio.h>
 #include "stats.h"
+#include "platform.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
 
-void main() {
+int main1() {
 
   unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                               114, 88,   45,  76, 123,  87,  25,  23,
@@ -44,7 +45,27 @@ void main() {
   /* Other Variable Declarations Go Here */
   int median,mean,max,min;
   /* Statistics and Printing Functions Go Here */
-    void swap(unsigned char *xp, unsigned char *yp) { 
+    
+    
+    //Testing of the functions
+    
+    print_statistics(test);
+    print_array(test,SIZE);
+    median=find_median(test,SIZE);
+    printf("Median:%d\n", median);
+    mean=find_mean(test,SIZE);
+    printf("Mean:%d\n", mean);
+    max=find_maximum(test,SIZE);
+    printf("Maximum:%d\n", max);
+    min=find_minimum(test,SIZE);
+    printf("Minimum:%d\n", min);
+    sort_array(test,SIZE);
+    print_array(test,SIZE);
+   
+    return 0;
+}
+
+void swap(unsigned char *xp, unsigned char *yp) { 
         int temp = *xp; 
         *xp = *yp; 
         *yp = temp; 
@@ -71,10 +92,12 @@ void main() {
 	}
     
     void print_array(unsigned char arr[], unsigned int n){
-        int i;
+	#ifdef VERBOSE        
+	int i;
         for (i=0;i<n;i++)
-            printf("%d ", arr[i]);
-        printf("\n");
+            PRINTF("%d ", arr[i]);
+        PRINTF("\n");
+	#endif
     }
     
     unsigned char find_median(unsigned char arr[], unsigned int n){
@@ -116,21 +139,5 @@ void main() {
                 if (arr[j] < arr[j+1]) 
                     swap(&arr[j], &arr[j+1]);
     }
-    
-    //Testing of the functions
-    
-    print_statistics(test);
-    //print_array(test,SIZE);
-    //median=find_median(test,SIZE);
-    //printf("Median:%d\n", median);
-    //mean=find_mean(test,SIZE);
-    //printf("Mean:%d\n", mean);
-    //max=find_maximum(test,SIZE);
-    //printf("Maximum:%d\n", max);
-    //min=find_minimum(test,SIZE);
-    //printf("Minimum:%d\n", min);
-    //sort_array(test,SIZE);
-    //print_array(test,SIZE);
-}
 
 /* Add other Implementation File Code Here */

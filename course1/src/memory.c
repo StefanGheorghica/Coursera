@@ -21,6 +21,9 @@
  *
  */
 #include "memory.h"
+#include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
 
 /***********************************************************
  Function Definitions
@@ -48,3 +51,76 @@ void clear_all(char * ptr, unsigned int size){
   set_all(ptr, 0, size);
 }
 
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
+
+	size_t index = length;
+
+ 	uint8_t * temp =  (uint8_t*)malloc(length*sizeof(uint8_t));
+  	uint8_t* tPtr = (uint8_t*)temp;
+
+  	while(index > 0){
+    		*tPtr++ = *src++;
+		index--;
+  	}
+
+  	tPtr = temp;
+  	index = length;
+
+  	while(index > 0){
+    		*dst++ = *tPtr++;
+		index--;
+  	}
+
+  	free(temp);
+  	return dst;
+}
+
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length){
+	int i;
+// Copy data from scr[] to dst[] 
+	for (i=0; i<length; i++)
+		*(dst+i) = *(src+i);
+	return dst;	
+}
+
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value){
+	int i;
+	for (i=0;i<length;i++)
+		*(src+i)=value;
+	return src;
+}
+
+uint8_t * my_memzero(uint8_t * src, size_t length){
+	int i;
+	for (i=0;i<length;i++)
+		*(src+i)=0;
+	return src;
+}
+
+uint8_t * my_reverse(uint8_t * src, size_t length)
+{ 
+	int i;
+	uint8_t temp;
+	size_t l=length-1; 
+	for (i=0; i<length/2; i++){ 
+		temp=*(src+i);
+		*(src+i)=*(src+l);
+		*(src+l)=temp;
+		l--; 
+	}
+	return src;
+} 
+
+int32_t * reserve_words(size_t length){
+	int32_t *buf;
+	buf = malloc (sizeof(uint32_t)*length);
+	if( buf == NULL ){ 
+  		PRINTF( "Fatal Error: Failed to malloc memory" );
+		return buf;	
+	}
+	return buf;
+} 
+
+void free_words(uint32_t * src){
+	free(src);
+}
