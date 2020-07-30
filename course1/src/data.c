@@ -24,7 +24,7 @@
 #include "memory.h"
 #include <stdint.h>
 
-uint8_t* my_itoa(int32_t data, uint8_t* ptr, uint32_t base){ 
+uint8_t my_itoa(int32_t data, uint8_t* ptr, uint32_t base){ 
 	int32_t i = 0;
 	int32_t rem; 
 	uint8_t sign = 0; 
@@ -34,7 +34,7 @@ uint8_t* my_itoa(int32_t data, uint8_t* ptr, uint32_t base){
 		*(ptr+i) = '0';
 		i++; 
 		*(ptr+i) = '\0'; 
-		return ptr; 
+		return i; 
 	} 
 
 	// In standard itoa(), negative numbers are handled only with 
@@ -67,7 +67,7 @@ uint8_t* my_itoa(int32_t data, uint8_t* ptr, uint32_t base){
 	// Reverse the string 
 	my_reverse(ptr, i); 
 
-	return ptr; 
+	return i; 
 } 
 
 int32_t my_atoi(uint8_t * ptr, uint32_t digits, uint32_t base){
